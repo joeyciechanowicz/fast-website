@@ -40,7 +40,12 @@ module.exports = {
 			template: 'index.hbs',
 			templateParameters: article
 		}),
-		new WebpackShellPlugin({onBuildEnd: ['brotli -q 10 dist/index.html']})
+		new WebpackShellPlugin({
+			onBuildEnd: [
+				'./node_modules/.bin/html-minifier --case-sensitive --collapse-whitespace --remove-comments --remove-empty-attributes --remove-redundant-attributes --output dist/index.html dist/index.html',
+				'brotli -q 10 dist/index.html'
+			]
+		})
 	],
 	module: {
 		rules: [
