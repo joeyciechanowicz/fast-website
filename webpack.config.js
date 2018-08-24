@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 
 const article = require('./article');
@@ -59,6 +60,9 @@ module.exports = {
 			templateParameters: article
 		}),
 		new HTMLInlineCSSWebpackPlugin(),
+		new ScriptExtHtmlWebpackPlugin({
+			defaultAttribute: 'async'
+		}),
 		new WebpackShellPlugin({
 			onBuildEnd: [
 				'./node_modules/.bin/html-minifier --case-sensitive --collapse-whitespace --remove-comments --remove-empty-attributes --remove-redundant-attributes --output dist/index.html dist/index.html',
