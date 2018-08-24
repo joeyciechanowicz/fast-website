@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fast Article</title>
+    <link rel="stylesheet" href="styles/journal-mosaic.css">
+</head>
+<body>
+
+
+<div id="content" class="position-relative z-index-1">
+    <div class="container cleared container-type-article" data-container-type="article">
+        <div class="content position-relative cleared clear mq1200-padded" data-component="article-container">
+            <article itemscope="itemscope" itemtype="http://schema.org/ScholarlyArticle">
+                <div class="full-width-print main-column pin-left js-main-column highlighter" role="main">
+                    <header>
+                        <div class="grid grid-12 last">
+                            <p class="text13 text-gray-light tiny-space-below" data-test="article-identifier">
+                                Article
+
+                                <span class="pl6 pr6 text-gray-extra-light"> | </span>
+                                <abbr title="Open Access" class="text-orange upper">Open</abbr>
+
+                                <span class="pl6 pr6 text-gray-extra-light"> | </span>
+                                <a href="#article-info">Published:
+                                    <time datetime="2018-06-18" itemprop="datePublished">18 June 2018</time>
+                                </a>
+                            </p>
+
+                            <h1 class="tighten-line-height small-space-below" data-test="article-title"
+                                data-article-title="" itemprop="name headline">
+                                {{title}}
+                            </h1>
+
+                            <ul class="grid grid-12 last clean-list inline-list js-list-authors text14 js-etal-collapsed small-space-below"
+                                data-etal="25" data-etal-small="3" data-test="authors-list">
+                                {{#each authors}}
+                                    <li itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+                                        <span itemprop="name">
+                                            <a data-test="author-name" data-track="click"
+                                               data-track-action="open author"
+                                               data-track-category="article body"
+                                               data-track-label="link"
+                                               href="#auth-{{@index}}"
+                                               class="js-no-scroll">
+                                                {{.}}
+                                            </a>
+                                        </span>
+                                        <span class="js-hide">
+                                            <a class="strong js-orcid js-no-scroll" itemprop="url"
+                                               href="http://orcid.org/0000-01234-1234-1234">
+                                                <span class="visually-hidden">ORCID: </span>orcid.org/0000-01234-1234-1234
+                                            </a>
+                                        </span>
+                                        <sup class="js-hide">
+                                            <a href="#Aff1" class="js-no-scroll" tabindex="-1">{{@index}}</a>
+                                            <span itemprop="affiliation" itemscope="itemscope"
+                                                  itemtype="http://schema.org/Organization" class="hide">
+                                                <meta itemprop="name" content="A fake university">
+                                                <meta itemprop="address"
+                                                      content="000000000000, grid.012345.12, University of Fake, Department of Fake Sciences, Fakeston, EN, 12345, USA">
+                                            </span>
+                                        </sup>,
+                                    </li>
+                                {{/each}}
+                                <li class="js-hide ml10">
+                                    <a href="javascript:;" class="js-etal js-no-scroll"
+                                       aria-label="Show fewer authors for this article">
+                                        - Show fewer authors
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                            <div class="grid-12 cleared" data-container-section="info">
+                                <p class="text14 standard-space-below">
+                                    <i data-test="journal-title">Scientific Reports</i>
+                                    <b data-test="journal-volume">
+                                        <span class="visually-hidden">volume</span>&nbsp;8
+                                    </b>,
+                                    Article&nbsp;number:&nbsp;<span data-test="article-number">1233</span> (<span
+                                        data-test="article-publication-year">2018</span>)
+                                    <span class="pl6 pr6 text-gray-extra-light"> | </span>
+                                    <a class="pr15 icon icon-right icon-download" data-test="citation-link"
+                                       data-track="click" data-track-action="download article citation"
+                                       data-track-category="article body" data-track-label="link"
+                                       href="/articles/s12345-123-1234455-4.ris">
+                                        Download Citation
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </header>
+
+
+                    <div data-article-body="true" data-track-component="article body" class="article-body clear">
+                        <section aria-labelledby="Abs1">
+                            <div class="serif article-section js-article-section cleared clear" id="Abs1-section"
+                                 aria-pressed="true">
+                                <h2 class="js-section-title section-title strong position-relative tighten-line-height background-gray-light pt20 pb6 pl0 pr20 standard-space-below small-space-above mq640-pt10 mq640-pb10 mq640-pl20 mq640-mt0 mq640-ml-20 mq640-mr-20 extend-left border-gray-medium border-top-1 js-clickable-title role-button mb0"
+                                    id="Abs1" role="button" tabindex="0" aria-pressed="false"
+                                    aria-controls="Abs1-content">
+                                    <span class="hide">Abstract</span>
+                                    <span class="js-section-title-label block position-relative text18 text-blue pr20 icon-rotate icon-arrow-down-12x7-gray js-icon-toggle">Abstract</span>
+                                </h2>
+                                <div class="pl20 mq875-pl0 js-collapsible-section standard-space-above"
+                                     id="Abs1-content" aria-expanded="true" aria-hidden="false" style="display: block;">
+                                    <p>
+                                        One morning, when Gregor Samsa woke from troubled dreams, he found himself
+                                        transformed in his bed into a horrible vermin. He lay on his armour-like back,
+                                        and if he lifted his head a little he could see his brown belly, slightly domed
+                                        and divided by arches into stiff sections.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        {{#each sections}}
+                            <section aria-labelledby="Sec{{@index}}">
+                                <div class="serif article-section js-article-section cleared clear"
+                                     id="Sec{{@index}}-section">
+                                    <h2 class="js-section-title section-title strong position-relative tighten-line-height background-gray-light pt20 pb6 pl0 pr20 standard-space-below small-space-above mq640-pt10 mq640-pb10 mq640-pl20 mq640-mt0 mq640-ml-20 mq640-mr-20 extend-left border-gray-medium border-top-1 js-clickable-title role-button mb0"
+                                        id="Sec{{@index}}" role="button" tabindex="{{@index}}" aria-pressed="false"
+                                        aria-controls="Sec{{@index}}-content">
+                                        <span class="hide">{{title}}</span>
+                                        <span class="js-section-title-label block position-relative text18 text-blue pr20 icon-rotate icon-arrow-down-12x7-gray nowrap hide-overflow overflow-ellipsis">Introduction</span>
+                                    </h2>
+                                    <div class="pl20 mq875-pl0 js-collapsible-section standard-space-above"
+                                         id="Sec{{@index}}-content">
+                                        {{#each content}}
+                                            <p>
+                                                {{{ref . }}}
+                                            </p>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </section>
+                        {{/each}}
+
+                        <section aria-labelledby="Bib1">
+                            <div class="serif article-section js-article-section cleared clear" id="Bib1-section"><h2
+                                    class="js-section-title section-title strong position-relative tighten-line-height background-gray-light pt20 pb6 pl0 pr20 standard-space-below small-space-above mq640-pt10 mq640-pb10 mq640-pl20 mq640-mt0 mq640-ml-20 mq640-mr-20 extend-left"
+                                    id="Bib1">References</h2>
+                                <div class="pl20 mq875-pl0 js-collapsible-section" id="Bib1-content">
+                                    <div data-container-section="references">
+                                        <ol class="clean-list ma0 standard-space-below indented-list" data-test="references-list">
+                                        {{{ref display}}}
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="reading-companion js-reading-companion position-relative cleared pin-left"
+                     role="complementary">
+                    <div data-container-type="reading-companion" data-track-component="reading companion">
+                        <h2 class="h3 sans-serif visually-hidden strong">Article Tools</h2>
+                        <div class="tighten-line-height cleared text14 position-relative z-index-1 standard-space-below pb20 border-gray-light border-bottom-1"
+                             data-article-tools="true" data-container-section="tools"><a
+                                class="block block-link pa15 pl0 icon-pdf-download nature-pdf-logo"
+                                data-article-pdf="true" data-readcube-pdf-url="true" data-test="pdf-link"
+                                data-draft-ignore="true" data-track="click" data-track-category="reading companion"
+                                data-track-label="link" data-track-action="download pdf"
+                                href="/articles/asdf-123-4321-4.pdf"><span
+                                class="inline-block pl20 pt5 pb5 icon icon-right">Download PDF</span></a></div>
+
+
+                        <div id="ab-test-placeholder">
+                            <div class="flex-box grid-12 mq480-kill-flex cleared pb40" data-container-section="info">
+
+                                <div class="flex-box grid grid-3 last mq480-grid-12">
+                                    <div class="flex-box-item border-gray-medium extra-tight-line-height border-left-1 text13 mq480-pt10"
+                                         data-component="article-history-list">
+                                        <p data-test="citation-count" class="pa10 pt0 pb0 mb0 pin-left">
+                                            <strong>0</strong><span class="block text-gray-light">Citations</span></p>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="flex-box grid grid-3 mq480-grid-12">
+                                    <div class="flex-box-item border-gray-medium extra-tight-line-height border-left-1 text13 mq480-pt10"
+                                         data-component="article-history-list">
+                                        <p data-test="altmetric-score" class="pa10 pt0 pb0 mb0 pin-left">
+                                            <strong>2</strong><span class="block text-gray-light">Altmetric</span></p>
+                                    </div>
+                                </div>
+
+
+                                <div class="flex-box grid grid-6 mq480-grid-12">
+                                    <div class="flex-box-item border-gray-medium extra-tight-line-height border-left-1 text13 mq480-pt10"
+                                         data-component="article-history-list">
+
+                                        <p class="pa10 mb0 pt0 pb0 pin-left text13 mb0"><br>
+                                            <span class="block"><a
+                                                    aria-label="More detail about citations and metrics for this article"
+                                                    data-test="metrics-link" href="/articles/asdf-123-4321-4/metrics"
+                                                    class="icon icon-right icon-double-chevron-right-10x10-blue pr15"
+                                                    data-track="click" data-track-action="view metrics"
+                                                    data-track-category="article body" data-track-label="link">Article metrics</a></span>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
