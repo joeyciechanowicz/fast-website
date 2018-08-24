@@ -1,20 +1,31 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const BrotliPlugin = require('brotli-webpack-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const article = require('./article');
 
 module.exports = {
 	mode: 'production',
 	entry: './src/index.js',
-	watch: true,
-	watchOptions: {
-		ignored: /node_modules/
-	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'bundle.js'
+		filename: '[name].js',
 	},
 	plugins: [
 		new CleanWebpackPlugin(['dist']),
+		new BrotliPlugin({
+			asset: '[path].br[query]',
+			test: /\.js$|\.css$|\.html$/,
+			threshold: 1024,
+			minRatio: 0.8
+		}),
+		new MiniCssExtractPlugin({
+			filename: '[name].css',
+			chunkFilename: '[id].css'
+		}),
 		new HtmlWebpackPlugin({
 			minify: {
 				caseSensitive: true,
@@ -24,17 +35,31 @@ module.exports = {
 				removeEmptyAttributes: true,
 				removeRedundantAttributes: true
 			},
-			hash: true,
+			hash: false,
 			title: 'Fast Article Site',
 			template: 'index.hbs',
-			templateParameters: () => require('./article')
-		})
+			templateParameters: article
+		}),
+		new WebpackShellPlugin({onBuildEnd: ['brotli -q 10 dist/index.html']})
 	],
 	module: {
 		rules: [
 			{
+				test: /\.css$/,
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader
+					},
+					'css-loader'
+				]
+			},
+			{
 				test: /\.hbs$/,
-				loader: 'handlebars-loader'
+				use: [
+					{
+						loader: 'handlebars-loader'
+					}
+				]
 			},
 		]
 	},

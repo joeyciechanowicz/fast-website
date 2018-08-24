@@ -1,12 +1,11 @@
 <!DOCTYPE html>
+<!--suppress ALL -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Fast Article</title>
-    <link rel="stylesheet" href="styles/journal-mosaic.css">
 </head>
 <body>
-
 
 <div id="content" class="position-relative z-index-1">
     <div class="container cleared container-type-article" data-container-type="article">
@@ -53,7 +52,7 @@
                                             </a>
                                         </span>
                                         <sup class="js-hide">
-                                            <a href="#Aff1" class="js-no-scroll" tabindex="-1">{{@index}}</a>
+                                            <a href="#Aff{{@index}}" class="js-no-scroll" tabindex="-1">{{@index}}</a>
                                             <span itemprop="affiliation" itemscope="itemscope"
                                                   itemtype="http://schema.org/Organization" class="hide">
                                                 <meta itemprop="name" content="A fake university">
@@ -64,7 +63,7 @@
                                     </li>
                                 {{/each}}
                                 <li class="js-hide ml10">
-                                    <a href="javascript:;" class="js-etal js-no-scroll"
+                                    <a class="js-etal js-no-scroll"
                                        aria-label="Show fewer authors for this article">
                                         - Show fewer authors
                                     </a>

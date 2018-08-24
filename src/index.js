@@ -1,1 +1,1 @@
-
+import '../styles/journal-mosaic.css';
